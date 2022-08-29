@@ -17,7 +17,6 @@
       <el-button type="primary">批量导入</el-button>
       <el-button type="primary">批量导出</el-button>
       <el-button type="primary">查看报表</el-button><br />
-
       <el-table
         stripe
         ref="multipleTable"
@@ -25,7 +24,6 @@
         tooltip-effect="dark"
       >
         <el-table-column type="selection"> </el-table-column>
-     
         <el-table-column prop="nickname" label="学生名称">
               <template slot-scope="scope">
                 <img :src="scope.row.avatar"  class="img">
@@ -40,15 +38,13 @@
             </template>
         </el-table-column>
            <el-table-column label="日期">
-            {{this.time}}
+          <template slot-scope="scope">
+              {{scope.row.created_at|a}}
+          </template>
         </el-table-column>
         <el-table-column fixed="right" label="操作" >
           <template slot-scope="scope">
-            <el-button type="text" size="small">详情</el-button>
-            <el-button type="text" size="small">编辑</el-button>
-            <el-button type="text" size="small">禁用</el-button>
-            <el-button type="text" size="small">删除</el-button>
-            <el-button type="text" size="small">重置密码</el-button>
+           <jk></jk>
           </template>
         </el-table-column>
       </el-table>
@@ -58,7 +54,7 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="currentPage4"
-      :page-sizes="[19, 10, 1, 5]"
+      :page-sizes="[1, 5, 10,19 ]"
       :page-size="pages"
       layout="total, sizes, prev, pager, next, jumper"
       :total="tableData.length">
@@ -66,20 +62,21 @@
   </div>
   </div>
 </template>
-</div>
-</template>
 
 <script>
+import jk from "../components/jk.vue";
 import axios from "axios";
 export default {
   name: "",
-  components: {},
+  components: {
+    jk
+  },
   data() {
     return {
         tel:'',
         xuename1:'',
-        currentPage4:0,
-        pages:0,
+        currentPage4:5,
+        pages:1,
         time:new Date().toLocaleDateString(),
       tableData: [],
       tablelist:[],
@@ -97,7 +94,12 @@ export default {
     };
   },
   //过滤器
-  filters: {},
+  filters: {
+    a(val){
+      return new Date(val*1000).toLocaleString(
+      )
+    }
+  },
   created() {
     axios.get('list.json').then((res)=>{
         console.log(res);
