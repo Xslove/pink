@@ -1,0 +1,48 @@
+// prettier 格式化配置
+"javascript.format.placeOpenBraceOnNewLineForControlBlocks": false, // 函数左括号{是否换行
+"javascript.format.insertSpaceBeforeFunctionParenthesis": true, // 让函数(名)和后面的括号之间加个空格
+"prettier.printWidth": 80,
+"prettier.tabWidth": 2,
+"prettier.useTabs": true,
+"prettier.singleQuote": true,
+"prettier.jsxSingleQuote": true,
+"prettier.quoteProps": "consistent",
+"prettier.trailingComma": "all",
+"prettier.bracketSpacing": true,
+"prettier.jsxBracketSameLine": false,
+"prettier.arrowParens": "always",
+"prettier.semi": true,
+"prettier.requirePragma": false,
+"prettier.insertPragma": false,
+"prettier.proseWrap": "preserve",
+"prettier.htmlWhitespaceSensitivity": "ignore",
+"prettier.endOfLine": "auto",
+"prettier.vueIndentScriptAndStyle": true,
+// https://prettier.io/docs/en/options.html 官方文档
+// https://juejin.im/post/5a7d70496fb9a063317c47f1 中文翻译
+// https://segmentfault.com/a/1190000012909159
+// https://www.jianshu.com/p/4be58a69b20f
+// ---------------------------------------------------
+
+// ---------------------------------------------------
+// ESLint 配置代码检查
+"eslint.format.enable": false,
+"eslint.alwaysShowStatus": false,
+"eslint.quiet": false, // 忽略检查
+"eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+],
+"eslint.run": "onSave",
+"eslint.options": {
+    "extensions": [
+        ".js",
+        ".vue",
+    ],
+},
+"editor.codeActionsOnSave": { // 启用 eslint 自动修复
+    "source.fixAll.eslint": true
+}
